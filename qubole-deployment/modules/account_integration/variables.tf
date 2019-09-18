@@ -9,7 +9,7 @@ variable "qubole-external-id" {
   default = "GI3DEMLIMRUWCZLC"
 }
 
-variable "region" {
+variable "data_lake_project_region" {
   default = "ap-southeast-1"
 }
 
