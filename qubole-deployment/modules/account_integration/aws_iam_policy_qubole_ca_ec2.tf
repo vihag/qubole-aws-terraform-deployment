@@ -11,7 +11,7 @@ Creates a Custom IAM Policy to provide permissions for the EC2 Service to
 */
 
 resource "aws_iam_policy" "qubole_ca_ec2_policy" {
-  name = "qubole_ca_ec2_policy"
+  name = "qubole_ca_ec2_policy_${var.deployment_suffix}"
   description = "EC2 policy to authorize Qubole for orchestrating EC2 and other Compute resources in our account"
 
   policy = file("${path.module}/policies/qubole_ca_ec2_policy_doc.json")

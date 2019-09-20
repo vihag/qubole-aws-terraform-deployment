@@ -7,7 +7,25 @@ Creates a SubNetwork in the Qubole Dedicated VPC.
 */
 
 resource "aws_subnet" "qubole_vpc_private_subnetwork" {
-  cidr_block = "10.2.0.0/24"
+  cidr_block = "10.0.2.0/24"
   vpc_id = aws_vpc.qubole_dedicated_vpc.id
   map_public_ip_on_launch = false
+
+  tags = {
+    Name = "qubole_vpc_private_subnetwork_${var.deployment_suffix}"
+  }
+
 }
+
+output "qubole_vpc_private_subnet" {
+  value = aws_subnet.qubole_vpc_private_subnetwork.arn
+}
+
+output "qubole_vpc_private_subnet_cidr" {
+  value = aws_subnet.qubole_vpc_private_subnetwork.cidr_block
+}
+
+output "qubole_vpc_az" {
+  value = aws_subnet.qubole_vpc_private_subnetwork.availability_zone
+}
+

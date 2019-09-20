@@ -14,8 +14,8 @@
         "s3:ListBucket"
       ],
       "Resource": [
-        "arn:aws:s3:::vihagg.us/tf/defloc/*",
-        "arn:aws:s3:::vihagg.us/tf/defloc"
+        "arn:aws:s3:::${defloc}/*",
+        "arn:aws:s3:::${defloc}"
       ]
     },
     {

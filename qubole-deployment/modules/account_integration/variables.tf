@@ -14,5 +14,5 @@ variable "data_lake_project_region" {
 }
 
 variable "qubole-defloc-name" {
-  default = "vihagg.us/tf/qubole_defloc"
+  default = "vihagg-tf-defloc"
 }

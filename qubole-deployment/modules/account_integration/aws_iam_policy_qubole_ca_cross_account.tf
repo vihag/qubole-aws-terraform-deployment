@@ -14,13 +14,13 @@ Creates a Custom IAM Policy to provide permissions for the holder of this policy
 data "template_file" "qubole_cross_account_policy_template" {
   template = file("${path.module}/policies/qubole_ca_cross_account_policy_doc.json")
   vars = {
-    arn-number = aws_iam_role.qubole_dual_role.arn
-    dual-role-name = aws_iam_role.qubole_dual_role.name
+    instance-profile = aws_iam_instance_profile.qubole_dual_role_instance_profile.arn
+    dual-iam-role = aws_iam_role.qubole_dual_role.arn
   }
 }
 
 resource "aws_iam_policy" "qubole_cross_account_policy" {
-  name = "qubole_cross_account_policy"
+  name = "qubole_cross_account_policy_${var.deployment_suffix}"
   description = "Policy to authorize Qubole to pass along the Instance Profile for Clusters, and get these Instance Profiles as well"
 
   policy = data.template_file.qubole_cross_account_policy_template.rendered

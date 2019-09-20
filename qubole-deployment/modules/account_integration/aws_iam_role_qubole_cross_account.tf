@@ -7,7 +7,7 @@ data "template_file" "qubole_cross_account_role_trust_template" {
 }
 
 resource "aws_iam_role" "qubole_cross_account_role" {
-  name = "qubole_cross_account_role"
+  name = "qubole_cross_account_role_${var.deployment_suffix}"
   assume_role_policy = data.template_file.qubole_cross_account_role_trust_template.rendered
 }
 
