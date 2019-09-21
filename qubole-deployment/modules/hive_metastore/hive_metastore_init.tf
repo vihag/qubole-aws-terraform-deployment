@@ -1,3 +1,11 @@
+/*
+Initializes the Hive metastore DB with the schema required for it to work as a metastore
+  1. Remotely executes the scripts on the DB using the bastion host as a conduit
+  2. Opens up the local machine to be able to access the bastion on port 22 ssh
+  3. Has an explicit dependency on having access to a key-pair allowing access to the bastion instance(we use the local machines id_rsa)
+
+*/
+
 data "external" "whatismyip" {
   program = ["${path.module}/scripts/shell/whatsmyip.sh"]
 }

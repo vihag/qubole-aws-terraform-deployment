@@ -1,5 +1,10 @@
 /*
-Creates a AWS Nat gateway, residing in the public subnet
+Creates a NAT gateway
+ 1. Attached to the public subnet in the qubole dedicated VPC
+
+This is for the reason:
+ 1. Private Subnets disallow VMs from having a public IPv4 address and hence no internet accessibility
+ 2. NAT allows outbound access while keeping away inbound access
 */
 
 resource "aws_nat_gateway" "qubole_dedicated_vpc_nat_gw" {

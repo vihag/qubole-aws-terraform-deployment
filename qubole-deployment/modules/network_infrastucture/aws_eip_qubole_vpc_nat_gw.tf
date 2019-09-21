@@ -1,7 +1,7 @@
 /*
-Creates an EIP to be allocated to the NAT Gateway residing in the public subnetwork of the Qubole dedicated VPC
+Creates a Elastic IP address for
+ 1. The NAT Gateway running in the public subnet of the Qubole dedicated VPC
 */
-
 resource "aws_eip" "qubole_dedicated_vpc_nat_gw_eip" {
   vpc      = true
   tags = {

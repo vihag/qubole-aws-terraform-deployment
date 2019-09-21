@@ -1,7 +1,18 @@
+/*
+Creates a two way VPC peering between
+ 1. The Qubole Dedicated VPC
+ 2. The Hive Metastore Dedicated VPC
+ 3. Creates Route Table entries that direct traffic to each other using the VPC Peering Connection end point
+
+ This is for the reason:
+ 1. Qubole can access the RDS instance hosting the Hive Metastore in a secure and scalable fashion
+ 2. The Route Table entries are required because AWS VPC peering does not support auto creation of routes
+
+*/
+
 resource "aws_vpc_peering_connection" "qubole_vpc_hive_vpc_peering" {
   peer_vpc_id   = var.qubole_dedicated_vpc
   vpc_id        = aws_vpc.hive_metastore_dedicated_vpc.id
-  #peer_region   = var.data_lake_project_region
 
   tags = {
     Name = "qubole-vpc-hive-vpc-peering"

@@ -1,10 +1,11 @@
 /*
-Creates a Security group that
- 1. Allows ingress to the Bastion Host from Qubole's Tunneling NAT
- 2. Allows ingress to the Bastion Host from the Private Subnet in the Qubole Dedicated VPC
+Creates a Security Group for RDS Instance to host the Hive Metastore. It
+ 1. Whitelists the Qubole Bastion Host on port 3306 and 20557
+ 2. Whitelists the Qubole Dedicated VPCs private subnet on port 3306
 
  This is for the following reason:
- 1. Qubole Control Plane will talk(e.g. command submissions) to the Qubole Clusters via the Bastion Host
+ 1. Qubole uses the bastion host to query the metastore for DB-table lists to show on the Analyze page
+ 2. Qubole clusters create a thrift connection to the hive metastore which are utlized by the engines for Hive Integrations
 */
 
 resource "aws_security_group" "hive_metastore_security_group" {

@@ -1,5 +1,6 @@
 /*
-Creates a AWS Internet gateway, residing in the public subnet
+Creates an Internet Gateway for
+ 1. The NAT Gateway running in the public subnet of the Qubole dedicated VPC, and for the Qubole Dedicated VPC
 */
 
 resource "aws_internet_gateway" "qubole_dedicated_vpc_internet_gw" {
