@@ -1,5 +1,6 @@
 /*
-Creates an EIP to be allocated to the NAT Gateway residing in the public subnetwork of the Qubole dedicated VPC
+Creates a Elastic IP address for
+ 1. The EC2 instance acting as the Bastion Host of the VPC
 */
 
 resource "aws_eip" "qubole_dedicated_vpc_bastion_eip" {
