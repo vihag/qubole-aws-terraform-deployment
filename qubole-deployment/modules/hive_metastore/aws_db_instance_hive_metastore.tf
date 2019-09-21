@@ -1,3 +1,19 @@
+/*
+Creates an RDS Instance to host the Hive Metastore. It
+ 1. Creates a MySQL 5.7 instance in the specified VPC and DB subnet group
+ 2. Creates a database/schema called hive which will act as the Hive Metastore
+ 3. Creates a root user and initializes its password.
+ 4. Initializes the hive database with the required tables for it to be a functional Hive Metastore
+ 5. RDS will not have a public IP or public accessibility for security
+
+ This is for the following reason:
+ 1. Qubole requires a Hive Metastore configured for the account so that the engines can be seamlessly integrated with the metastore
+ 2. Qubole provides a hosted metastore, but more often than not, for security and scalability reasons, customers will want to host their own metastore
+
+ Caveats:
+ 1. AWS RDS does not allow bootstrap SQL scripts to initialize the DB, so we run the init of the metastore via the Bastion Host
+*/
+
 resource "aws_db_instance" "hive_metastore_db_instance" {
   identifier = "hive-metastore-db-${var.deployment_suffix}"
   allocated_storage = 20
