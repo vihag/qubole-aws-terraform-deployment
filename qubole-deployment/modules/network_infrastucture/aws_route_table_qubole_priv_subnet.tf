@@ -28,3 +28,7 @@ resource "aws_route_table_association" "qubole_dedicated_vpc_priv_subnet_route_a
   route_table_id = aws_route_table.qubole_dedicated_vpc_priv_subnet_route_table.id
   subnet_id = aws_subnet.qubole_vpc_private_subnetwork.id
 }
+
+output "qubole_dedicated_vpc_priv_subnet_route_table" {
+  value = aws_route_table.qubole_dedicated_vpc_priv_subnet_route_table.id
+}

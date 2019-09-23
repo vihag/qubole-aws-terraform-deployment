@@ -53,5 +53,8 @@ variable "qubole_dedicated_vpc_priv_subnet_cidr" {
 variable "qubole_dedicated_vpc_pub_subnet_cidr" {
 }
 
+variable "qubole_dedicated_vpc_priv_subnet_route_table" {
+}
+
 variable "qubole_dedicated_vpc_pub_subnet_route_table" {
 }

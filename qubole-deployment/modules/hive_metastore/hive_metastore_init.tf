@@ -43,6 +43,7 @@ resource "null_resource" "hive_metastore_init_provisioner" {
     user = var.qubole_bastion_user
     port = 22
     agent = true
+    private_key = file("~/.ssh/id_rsa")
   }
 
   provisioner "file" {

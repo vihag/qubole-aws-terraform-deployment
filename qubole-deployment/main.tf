@@ -35,6 +35,7 @@ module "hive_metastore" {
   qubole_bastion_security_group = module.network_infrastructure.qubole_bastion_security_group
   qubole_dedicated_vpc_pub_subnet_route_table = module.network_infrastructure.qubole_dedicated_vpc_pub_subnet_route_table
   qubole_dedicated_vpc_pub_subnet_cidr = module.network_infrastructure.qubole_vpc_public_subnetwork_cidr
+  qubole_dedicated_vpc_priv_subnet_route_table = module.network_infrastructure.qubole_dedicated_vpc_priv_subnet_route_table
 }
 
 

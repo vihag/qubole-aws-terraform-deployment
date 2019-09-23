@@ -6,11 +6,11 @@ variable "data_lake_project_region" {
 }
 
 variable "public_ssh_key" {
-  default = "get from account"
+  default = "get from your account"
 }
 
 variable "qubole_public_key" {
-  default = "get from account"
+  default = "get from your account"
 }
 
 variable "qubole_tunnel_nat" {

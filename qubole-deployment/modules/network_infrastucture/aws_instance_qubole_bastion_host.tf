@@ -41,6 +41,7 @@ resource "aws_instance" "qubole_bastion_host" {
 
   tags = {
     Name = "qubole_bastion_host_${var.deployment_suffix}"
+    Project = "ralali_demo"
   }
 
 
