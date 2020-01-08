@@ -28,8 +28,8 @@ data "template_file" "qubole_bastion_ssh_bootstrap" {
 }
 
 resource "aws_instance" "qubole_bastion_host" {
-  ami = "ami-0c3326e0cad1779ba"
-  instance_type = "t2.micro"
+  ami = var.bastion_ami
+  instance_type = var.bastion_instance_type
   vpc_security_group_ids = [
     aws_security_group.bastion_security_group.id
   ]
@@ -41,7 +41,7 @@ resource "aws_instance" "qubole_bastion_host" {
 
   tags = {
     Name = "qubole_bastion_host_${var.deployment_suffix}"
-    Project = "ralali_demo"
+    Project = "qubole-aws"
   }
 
 
